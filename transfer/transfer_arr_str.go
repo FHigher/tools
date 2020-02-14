@@ -1,8 +1,7 @@
-package main
+package transfer
 
 import (
 	"bytes"
-	"fmt"
 	"strconv"
 	"strings"
 	"sync"
@@ -16,11 +15,12 @@ var (
 	}
 )
 
+// []int32 以sep合并为字符串
 func JoinInt32Slice(array []int32, sep string) (s string) {
 
 	length := len(array)
 
-	if 0 ==  length{
+	if 0 == length {
 		return ""
 	}
 
@@ -44,6 +44,7 @@ func JoinInt32Slice(array []int32, sep string) (s string) {
 	return
 }
 
+// int32位十进制的字符串，以sep分割为[]int32
 func SplitInt32s(s, sep string) ([]int32, error) {
 	if "" == s {
 		return nil, nil
@@ -107,17 +108,4 @@ func SplitInt64s(s, sep string) ([]int64, error) {
 	}
 
 	return iArr, nil
-}
-
-func main() {
-	nums32 := []int32{23, 34, 56, 7}
-	nums64 := []int64{33, 55, 66, 77}
-
-	int32String := JoinInt32Slice(nums32, ",")
-	fmt.Println(int32String)
-	fmt.Println(SplitInt32s(int32String, ","))
-
-	int64String := JoinInt64Slice(nums64, "-")
-	fmt.Println(int64String)
-	fmt.Println(SplitInt64s(int64String, "-"))
 }
