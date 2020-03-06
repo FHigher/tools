@@ -8,7 +8,7 @@ import (
 var dirPath = "C:\\Users\\Administrator\\Desktop\\code\\algorithm"
 
 func TestGetAllByRecursion(t *testing.T) {
-	files := GetAllByRecursion(dirPath)
+	files := GetAllByRecursion(dirPath, 1)
 	for _, f := range files {
 		fmt.Println(f)
 	}
