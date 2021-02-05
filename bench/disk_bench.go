@@ -83,7 +83,7 @@ var help = flag.Bool("h", false, "show help")
 var helpUsage = func() {
 	fmt.Println(`
 help info:
-	--path  specify file path, not filename
+	--path  specify file store path, not filename
 	--size  specify file size. the unit is GB, eg: --size=1, it is 1GB
 	--con   specify the number of files generated concurrently
 	--json  output json file
@@ -136,7 +136,7 @@ func main() {
 	}
 	fileFlag.FilePath = filepath.Join(fileFlag.FilePath, "bench_file")
 	// 创建生成文件的目录
-	err := os.Mkdir(fileFlag.FilePath, os.ModePerm)
+	err := os.MkdirAll(fileFlag.FilePath, os.ModePerm)
 	if nil != err {
 		log.Panicln(err)
 	}
@@ -210,7 +210,6 @@ func main() {
 		}
 	}
 
-	
 }
 
 // ConcurrentWrite concurrent
